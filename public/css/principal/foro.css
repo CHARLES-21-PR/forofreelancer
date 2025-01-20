@@ -1,0 +1,213 @@
+nav{
+    background-color: #fff;
+    
+}
+
+
+
+.barra {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    color: black;
+    box-shadow: 12px 8px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.material {
+    height: 100px;
+}
+
+.comment {
+    margin-left: 3rem; /* Ajusta el valor según tus necesidades */
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+}
+
+.publicacion-container {
+    position: relative;
+}
+
+.publicacion-container .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.publi {
+    -webkit-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+}
+.admin-role {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    background-color: chocolate;
+}
+
+.moderator-role {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    background-color: rgb(3, 107, 1);
+}
+
+.user-role {
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    background-color: rgb(0, 112, 232);
+}
+
+.delegado-role {
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    background-color: rgb(218, 0, 0);
+}
+
+.reaction-button {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.reaction-button .btn {
+    
+    background-color: #28a745;
+    color: white;
+    border: none;
+    
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.reaction-button .btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.reaction-button .circle {
+    position: absolute;
+    bottom: -50px; /* Inicialmente fuera de la vista */
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(40, 167, 69, 0.5); /* Verde con transparencia */
+    border-radius: 50%;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease;
+    z-index: 0; /* Asegura que el círculo esté detrás del botón */
+}
+
+
+
+.reaction-options {
+    display: none;
+    position: absolute;
+    bottom: 100%; /* Posiciona las opciones de reacciones sobre el texto "Reaccionar" */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    white-space: nowrap; /* Asegura que los elementos se alineen horizontalmente */
+}
+
+.reaction-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 5px; /* Espacio entre las imágenes */
+}
+
+.reaction-item img {
+    width: 32px; /* Tamaño fijo para las imágenes */
+    height: 32px; /* Tamaño fijo para las imágenes */
+    object-fit: cover; /* Asegura que la imagen se ajuste al tamaño sin distorsionarse */
+    transition: transform 0.3s;
+}
+
+.reaction-item:hover img {
+    transform: scale(1.3); /* Aumenta el tamaño de la imagen al pasar el cursor */
+}
+
+.reaction-item .user-list {
+    display: none;
+    position: absolute;
+    bottom: 100%; /* Mostrar la lista de usuarios sobre la imagen */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo gris con transparencia */
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+.reaction-item:hover .user-list {
+    display: block;
+    
+}
+
+.reaction-name {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap; /* Evita que el texto se desborde en forma vertical */
+    max-width: 150px; /* Limita el ancho del contenedor del nombre */
+    overflow: hidden; /* Oculta el texto que se desborde */
+    text-overflow: ellipsis;
+}
+
+.reaction-item:hover .reaction-name {
+    opacity: 1;
+}
+
+.reaction-button:hover .reaction-options {
+    display: block;
+}
+
+.reactions-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+.reactions-summary img {
+    width: 10px;
+    height: 10px;
+    
+}
+
+.reactions-summary span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-name {
+    color: blue; /* Aplica el color azul a los nombres de los usuarios */
+}
+
+.mt-2.d-flex.align-items-center {
+    display: flex;
+    align-items: center;
+}
+
+.highlight {
+    -webkit-box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
+    -moz-box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
+    box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
+    transition: border 0.3s ease;
+}

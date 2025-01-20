@@ -1,0 +1,1 @@
+@include('modules.foro.layouts.menuCategorias')
