@@ -35,16 +35,9 @@
                                                 <td>{{ $item->fecha_de_creacion }}</td>
                                                 <td>
                                    
-                                                    @if($item->id == 1)
-                                                        <a href="{{ route('pag.cuzi', ['id_tema' => $item->id]) }}" class="btn btn-primary">
-                                                            <i class="fa-solid fa-pen"></i> Ir a la página
-                                                        </a>
-                                                    @else
-                                                        <!-- Aquí puedes agregar rutas para otros temas o dejar el botón deshabilitado -->
-                                                        <a href="#" class="btn btn-secondary disabled">
-                                                            <i class="fa-solid fa-pen"></i> Próximamente
-                                                        </a>
-                                                    @endif
+                                                    <a href="{{ route('pag.cuzi', ['id_tema' => $item->id]) }}" class="btn btn-primary">
+                                                        <i class="fa-solid fa-pen"></i> Ir a la página
+                                                    </a>
                                                 </td>
                                             </tr>
                                             @empty

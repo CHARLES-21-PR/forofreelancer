@@ -1,21 +1,27 @@
 <x-app-layout>
 
     @inject('userModel', 'App\Models\User');
+    <div class="container">
+        <h2 class="text-success text-center">Pagina de confesiones</h2>
+        <br>
+        
+    </div>
 
     <div class="container">
-        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:20px; text-align:center">CUZILATADA</h1>
-        <img src="/img/principal/choco.jpg" class="rounded mx-auto d-block" alt="...">
+        <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:20px; text-align:center">{{ $tema->titulo }}</h1>
+        @if ($tema->imagen)
+            <img src="{{ asset('images/' . $tema->imagen) }}" class="rounded mx-auto d-block" alt="Imagen de {{ $tema->titulo }}">
+        @else
+            <h2>No hay imagen</h2>
+        @endif
+        <br>
     </div>
     
     <div class="container">
         
         <div class="row">
 
-            <div class="col-md-10 mb-4">
-                <h2>Pagina de confesiones</h2>
-                <br>
-                
-            </div>
+            
 
             <div class="col-md-8">
                 @can('create posts')
@@ -226,7 +232,8 @@
     
             <div class="col-md-4">
                 <h4>Posts Populares</h4>
-                @foreach ($postsPopulares as $post)
+                @if($postsPopulares->count() > 0)
+                    @foreach ($postsPopulares as $post)
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="text-primary">{{ $post->usuario->name ?? 'Usuario desconocido' }}</h5>
@@ -237,6 +244,9 @@
                         </div>
                     </div>
                 @endforeach
+                @else
+                    <p class="text-primary">No hay publicaciones populares.</p>
+                @endif
 
                 <h4>Moderadores</h4>
                 @foreach ($moderadores as $moderador)

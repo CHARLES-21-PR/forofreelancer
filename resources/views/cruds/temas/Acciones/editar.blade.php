@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('actualizar.tema', $item->id) }}" method="POST">
+                        <form action="{{ route('actualizar.tema', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <label for="titulo">Titulo del tema</label>
@@ -18,6 +18,11 @@
                             </select>
                             <label for="fecha_de_creacion">Fecha de Creacion</label>
                             <input type="date" name="fecha_de_creacion" id="fecha_de_creacion" class="form-control" value="{{ $item->fecha_de_creacion }}">
+                            <label for="imagen">Imagen</label>
+                            <input type="file" name="imagen" id="imagen" class="form-control">
+                            @if ($item->imagen)
+                                <img src="{{ asset('images/' . $item->imagen) }}" alt="Imagen de {{ $item->titulo }}" style="width: 100px; height: 100px;">
+                            @endif
                             <label for="id_usuario">ID usuario</label>
                             <input type="text" name="id_usuario" id="id_usuario" class="form-control" value="{{ $item->id_usuario }}">
                             <button class="btn btn-warning mt-3">Actualizar</button>

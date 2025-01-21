@@ -76,7 +76,8 @@ class PublicacionController extends Controller
                              ->with(['usuario.roles', 'comentarios.usuario.roles'])
                              ->paginate(5);
         
-                             $postsPopulares = Publicaciones::withCount('reacciones')
+        $postsPopulares = Publicaciones::where('id_tema', $id_tema)
+                        ->withCount('reacciones')
                         ->orderBy('reacciones_count', 'desc')
                         ->take(3)
                         ->get();

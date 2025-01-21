@@ -17,6 +17,7 @@
                                 <th>Titulo</th>
                                 <th>ID Categoria</th>
                                 <th>Fecha de Creacion</th>
+                                <th>Imagen</th>
                                 <th>Acciones</th>                              
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@
                                 <td>{{ $item->titulo }}</td>
                                 <td>{{ $item->id_categoria }}</td>
                                 <td>{{ $item->fecha_de_creacion }}</td>
+                                <td>{{ $item->imagen }}</td>
                                 <td>
                                     <form action="{{ route('eliminar.tema', $item->id) }}" method="POST">
                                         @csrf

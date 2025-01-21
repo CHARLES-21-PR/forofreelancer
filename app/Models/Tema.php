@@ -15,6 +15,7 @@ class Tema extends Model
         'id_categoria',
         'usuario_id',
         'fecha_de_creacion',
+        'imagen',
     ];
 
     public function categoria()

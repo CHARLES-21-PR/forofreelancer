@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Publicaciones;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Tema;
 
@@ -25,17 +26,26 @@ class TemasController extends Controller
     public function insertar(Request $request)
     {
         $request->validate([
-            'titulo' => 'required|alpha|max:45',
+            'titulo' => 'required|max:45',
             'id_categoria' => 'required|exists:categorias,id',
             'fecha_de_creacion' => 'required|date',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'id_usuario' => 'required|exists:users,id',
+            
         ]);
 
         $item = new Tema();
         $item->titulo = $request->titulo;
         $item->id_categoria = $request->id_categoria;
         $item->fecha_de_creacion = $request->fecha_de_creacion;
-        $item->id_usuario = $request->id_usuario;
+        $item->id_usuario = Auth::id();
+
+        if ($request->hasFile('imagen')) {
+            $imageName = time().'.'.$request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $item->imagen = $imageName;
+        }
+
         $item->save();
         return redirect()->route('listar.tema')->with('success', 'Tema creado exitosamente.');
     }
@@ -59,9 +69,10 @@ class TemasController extends Controller
     public function actualizar(Request $request, string $id)
     {
         $request->validate([
-            'titulo' => 'required|alpha|max:45',
+            'titulo' => 'required|max:45',
             'id_categoria' => 'required|exists:categorias,id',
             'fecha_de_creacion' => 'required|date',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'id_usuario' => 'required|exists:users,id',
         ]);
 
@@ -69,6 +80,17 @@ class TemasController extends Controller
         $item->titulo = $request->titulo;
         $item->id_categoria = $request->id_categoria;
         $item->fecha_de_creacion = $request->fecha_de_creacion;
+
+        if ($request->hasFile('imagen')) {
+            // Eliminar la imagen anterior si existe
+            if ($item->imagen) {
+                unlink(public_path('images') . '/' . $item->imagen);
+            }
+            $imageName = time().'.'.$request->imagen->extension();
+            $request->imagen->move(public_path('images'), $imageName);
+            $item->imagen = $imageName;
+        }
+
         $item->id_usuario = $request->id_usuario;
         $item->save();
         return redirect()->route('listar.tema')->with('success', 'Tema actualizado exitosamente.');
