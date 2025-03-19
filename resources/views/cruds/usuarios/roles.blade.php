@@ -4,7 +4,7 @@
         <h1>Roles de Usuarios</h1>
         <h2>Roles Disponibles</h2>
         <table class="table">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>ID del Rol</th>
                     <th>Nombre del Rol</th>
@@ -22,7 +22,7 @@
 
         <h2>Usuarios y sus Roles</h2>
         <table class="table">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>ID del Usuario</th>
                     <th>Nombre del Usuario</th>

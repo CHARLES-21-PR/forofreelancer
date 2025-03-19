@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/principal/bootstrap.min.css">
     <link rel="stylesheet" href="/css/principal/templatemo.css">
     <link rel="stylesheet" href="/css/principal/custom.css">
-
+    
     <link rel="stylesheet" href="/css/principal/foro.css">
     
 
@@ -34,7 +34,7 @@
         Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="@yield('body-class')">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
@@ -53,5 +53,6 @@
             </main>
         </div>
         @include('layouts.footer')
+        @yield('scripts')
     </body>
 </html>

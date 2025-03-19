@@ -10,7 +10,7 @@
     <div class="container">
         <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:20px; text-align:center">{{ $tema->titulo }}</h1>
         @if ($tema->imagen)
-            <img src="{{ asset('images/' . $tema->imagen) }}" class="rounded mx-auto d-block" alt="Imagen de {{ $tema->titulo }}">
+            <img src="{{ asset('images/' . $tema->imagen) }}" class="rounded mx-auto d-block tema-imagen" alt="Imagen de {{ $tema->titulo }}">
         @else
             <h2>No hay imagen</h2>
         @endif
@@ -28,7 +28,7 @@
                 <a href="{{ route('publicar.post', ['id_tema' => $tema->id, 'user_id' => $user_id]) }}" class="btn btn-primary" style="border-radius: 20px; margin-bottom: 20px; width: 100%;"><i class="fa-solid fa-plus"></i> Agregar una publicacion</a>
                 @endcan
             
-                <div class="row justify-content-center">
+                <div class="row justify-content-center publicacion-padre">
     
                     
                     
@@ -38,37 +38,41 @@
                         <div class="col-md-10 mb-4 publicacion-container" id="publicacion-{{ $publicacion->id }}">
                             <div class="card publi" style="width: 100%;">
                                 <div class="card-body">
-                                    <div class="d-flex align-items-start">
-                                        @if ($publicacion->usuario && $publicacion->usuario->photo)
-                                            <img src="{{ asset('storage/' . $publicacion->usuario->photo) }}" alt="Profile Photo" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 8px;">
-                                        @else
-                                            <img src="{{ asset('images/default-user.png') }}" alt="Default Profile Photo" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 8px;">
-                                        @endif
-                                        <div>
-                                            <h5 class="card-title  mb-0">
-                                                <span class="user-name {{ $publicacion->usuario->getRoleClass() }}">{{ $publicacion->usuario->name ?? 'Usuario desconocido' }}</span>
-                                                @foreach ($items as $item)
-                                                    @if ($item->id == $publicacion->usuario->id)
-                                                        @foreach ($item->roles as $role)
-                                                            @php
-                                                                $roleClass = '';
-                                                                if ($role->name == 'administrador') {
-                                                                    $roleClass = 'admin-role';
-                                                                } elseif ($role->name == 'moderador') {
-                                                                    $roleClass = 'moderator-role';
-                                                                } elseif ($role->name == 'usuario'){
-                                                                    $roleClass = 'user-role';
-                                                                } else {
-                                                                    $roleClass = 'delegado-role';
-                                                                }
-                                                            @endphp
-                                                            <span class="badge badge-primary  {{ $roleClass }}">{{ $role->name }}</span>
-                                                        @endforeach
-                                                    @endif
-                                                @endforeach
-                                        
-                                            </h5>
-                                            <p class="card-text"><small class="text-success">{{ $publicacion->fecha_creacion }}</small></p><br>
+                                    <div class=" ">
+                                        <div class="d-flex align-items-start">
+                                            @if ($publicacion->usuario && $publicacion->usuario->photo)
+                                                <img src="{{ asset('storage/' . $publicacion->usuario->photo) }}" alt="Profile Photo" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 8px;">
+                                            @else
+                                                <img src="{{ asset('images/default-user.png') }}" alt="Default Profile Photo" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover; margin-right: 8px;">
+                                            @endif
+                                            <div>
+                                                <h5 class="card-title  mb-0">
+                                                    <span class="user-name {{ $publicacion->usuario->getRoleClass() }}">{{ $publicacion->usuario->name ?? 'Usuario desconocido' }}</span>
+                                                    @foreach ($items as $item)
+                                                        @if ($item->id == $publicacion->usuario->id)
+                                                            @foreach ($item->roles as $role)
+                                                                @php
+                                                                    $roleClass = '';
+                                                                    if ($role->name == 'administrador') {
+                                                                        $roleClass = 'admin-role';
+                                                                    } elseif ($role->name == 'moderador') {
+                                                                        $roleClass = 'moderator-role';
+                                                                    } elseif ($role->name == 'usuario'){
+                                                                        $roleClass = 'user-role';
+                                                                    } else {
+                                                                        $roleClass = 'delegado-role';
+                                                                    }
+                                                                @endphp
+                                                                <span class="badge badge-primary  {{ $roleClass }}">{{ $role->name }}</span>
+                                                                
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                            
+                                                </h5>
+                                                <p class="card-text"><small class="text-success">{{ $publicacion->fecha_creacion }}</small></p><br>
+                                            </div>
+                                        </div>
                                             <p class="card-text mb-0">{{ $publicacion->contenido }}</p>
     
                                              <!-- Aquí muestras las reacciones que ya tiene esta publicación -->
@@ -76,49 +80,65 @@
     
                 
                                             @if ($publicacion->imagen)
-                                                <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la publicación" class="img-fluid mt-2">
+                                                <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la publicación" class="img-fluid mt-2 post-image">
                                             @endif
                                             
                                             <div class="mt-4">
                                                 
-                                                <div class="reactions-summary">
-                                                    @foreach ($publicacion->reaccionesCount as $reaccionPubli)
-                                                    <span class="reaction-item">
-                                                        <img src="{{ asset('storage/' . $reaccionPubli->imagen) }}" style="width:20px;height:20px;">
-                                                        x ({{ $reaccionPubli->total }})
-                                                        <div class="user-list">
-                                                            @foreach ($publicacion->usuariosReaccion($publicacion->id, $reaccionPubli->id) as $usuario)
-                                                                    <div>{{ $usuario->name }}</div>
-                                                                @endforeach
+                                                 <div class="reactions-summary justify-content-between">
+                                                     <div class="react-content flex">
+                                                        @foreach ($publicacion->reaccionesCount as $reaccionPubli)
+                                                             <span class="reaction-item">
+                                                                <img src="{{ asset('storage/' . $reaccionPubli->imagen) }}" style="width:20px;height:20px;">
+                                                                 x ({{ $reaccionPubli->total }})
+                                                                <div class="user-list">
+                                                                     @foreach ($publicacion->usuariosReaccion($publicacion->id, $reaccionPubli->id) as $usuario)
+                                                                        <div class="react-user-name">{{ $usuario->name }}</div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </span>
+                                                        @endforeach
+                                                     </div>
+                                                     <div class="comment-content flex align-items-center position-relative">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-fill" viewBox="0 0 16 16">
+                                                            <path d="M14 0a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+                                                        </svg>
+                                                        <p class="p-2">{{ $publicacion->comentarios->count() }}</p>
+                                                        <div class="comment-user-list position-absolute bg-white p-2 border rounded shadow" style="display: none;">
+                                                            @foreach ($publicacion->comentarios as $comentario)
+                                                                <div  class="comment-user-name">{{ $comentario->usuario->name }}</div>
+                                                            @endforeach
                                                         </div>
-                                                    </span>
-                                                @endforeach
-                                                   
+                                                    </div>
                                                 </div>
-                                            </div>
+                                        
                                             <br>
-                                            <hr>
+                                            <hr style="border: 1px solid #000000;">
                                             @if (Auth::check() && (Auth::id() === $publicacion->id_usuario || $userModel::find(Auth::id())->hasRole('administrador') || ($userModel::find(Auth::id())->hasRole('moderador') && !$publicacion->usuario->hasRole('administrador'))))
-                                            <form action="{{ route('eliminar.post', $publicacion->id) }}" method="POST" class="d-inline delete-button">
+                                            <form id="deleteForm-{{ $publicacion->id }}" action="{{ route('eliminar.post', $publicacion->id) }}" method="POST" class="d-inline delete-button">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger btn-sm">
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $publicacion->id }})">
                                                     <i class="fa-solid fa-trash-can"></i> Eliminar
                                                 </button>
                                             </form>
                                         @endif
+
+                                        
                                             
                  <!-- Lista de reacciones disponibles para reaccionar -->
                  
-                <div class="mt-2">
+                <div class="mt-2 flex">
                     
                     @can('react post')
                     <div class="reaction-button">
-                        <span class="btn  btn-sm" onmouseover="showReactions({{ $publicacion->id }})" onmouseout="hideReactions({{ $publicacion->id }})">Reaccionar</span>
+                        <span class="btn  " onmouseover="showReactions({{ $publicacion->id }})" onmouseout="hideReactions({{ $publicacion->id }})">
+                            Reaccionar
+                            </span>
                         
                         <div class="reaction-options" id="reaction-options-{{ $publicacion->id }}" onmouseover="showReactions({{ $publicacion->id }})" onmouseout="hideReactions({{ $publicacion->id }})">
                             @foreach ($reacciones as $reaccion)
-                                <div class="reaction-item" style="position: relative; display: inline-block;">
+                                <div class="reaction-item" >
                                     <img src="{{ asset('storage/' . $reaccion->imagen) }}" alt="{{ $reaccion->nombre }}" class="rounded-circle" style="width: 32px; height: 32px; cursor: pointer;" onclick="addReaction({{ $publicacion->id }}, {{ $reaccion->id }})">
                                     <span class="reaction-name">{{ $reaccion->nombre }}</span>
                                 </div>
@@ -127,7 +147,13 @@
                     </div>
                     @endcan
                     <!-- Botón para mostrar/ocultar comentarios -->
-                    <button class="btn btn-secondary btn-sm ml-2" onclick="toggleComments({{ $publicacion->id }})">Mostrar/Ocultar Comentarios</button>
+                    <button class="btn btn-comentar" onclick="toggleComments({{ $publicacion->id }})">
+                        Comentar<span class="indicator">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                              </svg>
+                        </span>
+                        </button>
                 </div>                           
                                             
                                             
@@ -234,7 +260,7 @@
                 <h4>Posts Populares</h4>
                 @if($postsPopulares->count() > 0)
                     @foreach ($postsPopulares as $post)
-                    <div class="card mb-3">
+                    <div class="card mb-3  post-popu">
                         <div class="card-body">
                             <h5 class="text-primary">{{ $post->usuario->name ?? 'Usuario desconocido' }}</h5>
                             <h5 class="card-title">{{ $post->titulo }}</h5>
@@ -250,7 +276,7 @@
 
                 <h4>Moderadores</h4>
                 @foreach ($moderadores as $moderador)
-                    <div class="card mb-3">
+                    <div class="card mb-3  list-moderadores">
                         <div class="card-body d-flex align-items-center">
                             
                             @if ($moderador->photo)
@@ -265,13 +291,37 @@
             </div>
         </div>
     </div>
+
+     <!-- Modal de confirmación de eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar esta publicación?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        function toggleComments(publicacionId) {
-            var commentsDiv = document.getElementById('comments-' + publicacionId);
-            if (commentsDiv.style.display === 'none') {
-                commentsDiv.style.display = 'block';
+            function toggleComments(publicacionId) {
+            const commentsContainer = document.getElementById(`comments-${publicacionId}`);
+            const indicator = document.querySelector(`#comments-${publicacionId}`).previousElementSibling.querySelector('.indicator');
+
+            if (commentsContainer.style.display === 'none') {
+                commentsContainer.style.display = 'block';
+                indicator.classList.add('rotate');
             } else {
-                commentsDiv.style.display = 'none';
+                commentsContainer.style.display = 'none';
+                indicator.classList.remove('rotate');
             }
         }
 
@@ -336,5 +386,35 @@
                 item.querySelector('.reaction-name').style.opacity = '0';
             });
         });
+
+        function confirmDelete(publicacionId) {
+            const deleteForm = document.getElementById(`deleteForm-${publicacionId}`);
+            const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+            confirmDeleteButton.onclick = function() {
+                deleteForm.submit();
+            };
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            deleteModal.show();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        const commentContents = document.querySelectorAll('.comment-content');
+
+        commentContents.forEach(commentContent => {
+            commentContent.addEventListener('mouseover', function () {
+                const userList = this.querySelector('.comment-user-list');
+                if (userList) {
+                    userList.style.display = 'block';
+                }
+            });
+
+            commentContent.addEventListener('mouseout', function () {
+                const userList = this.querySelector('.comment-user-list');
+                if (userList) {
+                    userList.style.display = 'none';
+                }
+            });
+        });
+    });
     </script>
 </x-app-layout>

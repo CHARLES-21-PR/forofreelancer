@@ -1,11 +1,11 @@
 <div class="container">
-    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:20px; text-align:center">CRUDS</h1>
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:20px; text-align:center">Panel de control</h1>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         
         <div class="container-fluid">
           
           
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="collapse navbar-collapse  panel-control" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <li class="navbar-nav">
                     <a class="nav-link" href="{{ route('crud.usuarios') }}">Usuarios</a>

@@ -107,8 +107,14 @@ class TemasController extends Controller
     public function confesiones(Request $request)
     {
         $user_id = $request->input('id'); // Obtener el correo del usuario autenticado
-        $items = Tema::where('id_categoria', 1)->paginate(5); // Filtra por categoría de confesiones
-        return view('modules.foro.categorias.confesiones', compact('items', 'user_id'));
+        $query = $request->input('q'); // Obtener el término de búsqueda
+        $categorias = Categoria::with('temas')->get();
+
+        $found = $categorias->map->temas->flatten()->filter(function ($tema) use ($query) {
+            return stripos($tema->titulo, $query) !== false;
+        })->isNotEmpty();
+        
+        return view('modules.foro.categorias.confesiones', compact('categorias', 'user_id', 'query', 'found'));
     }
     public function cuzi()
     {

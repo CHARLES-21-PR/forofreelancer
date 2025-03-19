@@ -14,6 +14,7 @@ use App\Http\Controllers\ReaccionController;
 use App\Http\Controllers\NoticiasController;
 use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\ToolsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +59,12 @@ Route::get('/foro/{curso}', [ForoController::class, 'curso'])->name("foro.curso"
 
 //VIEW NOTICIAS
 Route::get('/noticias/listar', [Noticiacontroller::class, 'view']) ->name("noticias");
+
+//VIEW TOOLS
+Route::get('/tools', [ToolsController::class, 'index'])->name('tools');
+Route::get('/tools/calculadora', [ToolsController::class, 'calculadora'])->name('calculadora');
+Route::get('/tools/calculador-promedio', [ToolsController::class, 'promedio'])->name('promedio');
+Route::get('/tools/help-pages', [ToolsController::class, 'pages'])->name('pages');
 
 
 Route::get('/dashboard', [foroController::class, 'inicio'])->name('dashboard');

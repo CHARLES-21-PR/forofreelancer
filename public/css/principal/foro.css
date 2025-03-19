@@ -6,7 +6,7 @@ nav{
 
 
 .barra {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     color: black;
@@ -28,6 +28,19 @@ nav{
 
 .publicacion-container {
     position: relative;
+    margin-bottom: 20px;
+}
+
+.publicacion-padre{
+    max-width: 700px; /* Ajusta el ancho máximo del contenedor de los posts */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+.post-image {
+    width: 100%; /* Ocupa el 80% del ancho del contenedor padre */
+    border-radius: 15px; /* Bordes curvados */
+    display: block;
+    margin: 0 auto; /* Centra la imagen */
 }
 
 .publicacion-container .delete-button {
@@ -37,9 +50,7 @@ nav{
 }
 
 .publi {
-    -webkit-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .admin-role {
     color: rgb(255, 255, 255);
@@ -73,34 +84,37 @@ nav{
 
 .reaction-button .btn {
     
-    background-color: #28a745;
-    color: white;
+    
+    color: #218838;
     border: none;
     
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    
     position: relative;
     z-index: 1;
 }
 
 .reaction-button .btn:hover {
-    background-color: #218838;
-    transform: scale(1.05);
+    background-color: #e2e2e2;
+    
+}
+.btn-comentar{
+    color: #218838;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
-.reaction-button .circle {
-    position: absolute;
-    bottom: -50px; /* Inicialmente fuera de la vista */
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background-color: rgba(40, 167, 69, 0.5); /* Verde con transparencia */
-    border-radius: 50%;
-    transform: translateX(-50%);
-    transition: bottom 0.3s ease;
-    z-index: 0; /* Asegura que el círculo esté detrás del botón */
+.btn-comentar:hover {
+    background-color: #e2e2e2;
 }
+
 
 
 
@@ -110,9 +124,8 @@ nav{
     bottom: 100%; /* Posiciona las opciones de reacciones sobre el texto "Reaccionar" */
     left: 50%;
     transform: translateX(-50%);
-    
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 20px;
     z-index: 1;
     white-space: nowrap; /* Asegura que los elementos se alineen horizontalmente */
 }
@@ -121,7 +134,10 @@ nav{
     position: relative;
     display: inline-block;
     margin-right: 5px; /* Espacio entre las imágenes */
+    
 }
+
+
 
 .reaction-item img {
     width: 32px; /* Tamaño fijo para las imágenes */
@@ -140,14 +156,19 @@ nav{
     bottom: 100%; /* Mostrar la lista de usuarios sobre la imagen */
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo gris con transparencia */
-    color: white;
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo gris con transparencia */
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     padding: 5px;
     z-index: 1000;
     white-space: nowrap;
+    
+    
 }
-
+.react-user-name {
+    font-size: 12px !important; /* Tamaño de fuente más pequeño */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .reaction-item:hover .user-list {
     display: block;
     
@@ -168,6 +189,7 @@ nav{
     max-width: 150px; /* Limita el ancho del contenedor del nombre */
     overflow: hidden; /* Oculta el texto que se desborde */
     text-overflow: ellipsis;
+    
 }
 
 .reaction-item:hover .reaction-name {
@@ -205,9 +227,156 @@ nav{
     align-items: center;
 }
 
+.post-popu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-moderadores {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .highlight {
     -webkit-box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
     -moz-box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
     box-shadow: 0px 0px 16px 2px rgba(0, 221, 255, 0.75);
     transition: border 0.3s ease;
+}
+
+.highlight2 {
+    
+    background-color: yellow; /* Color de fondo para resaltar */
+    font-weight: bold; /* Texto en negrita */
+    
+}
+
+.nav-link.active {
+    color: #28a745 !important; /* Cambia el color del texto a verde */
+    font-weight: bold; /* Hace el texto más grueso */
+    transition: color 0.3s ease; /* Añade una transición suave */
+}
+
+.nav-link.active svg {
+    fill: #28a745; /* Cambia el color del SVG a verde */
+}
+
+.table-rounded {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px; /* Ajusta el valor según tus necesidades */
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen correctamente */
+}
+
+.panel-control {
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.75);
+}
+
+.tema-imagen {
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    max-width: 300px; /* Ajusta el ancho máximo según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste al tamaño sin distorsionarse */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.comment-content:hover .comment-user-list {
+    display: block; /* Muestra el contenedor al pasar el cursor */
+}
+
+.comment-user-list {
+    display: none; /* Oculta el contenedor por defecto */
+    position: absolute;
+    bottom: 100%; /* Posiciona el contenedor hacia arriba del ícono */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-width: 200px; /* Ajusta el ancho máximo según sea necesario */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el desbordamiento del texto */
+    text-overflow: ellipsis; /* Añade puntos suspensivos al final del texto desbordado */
+}
+
+.comment-user-name {
+    font-size: 12px !important; /* Tamaño de fuente más pequeño */
+    line-height: 1.2; /* Ajusta la altura de la línea */
+    margin-bottom: 2px; /* Espacio entre los nombres */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta el desbordamiento del texto */
+    text-overflow: ellipsis; /* Añade puntos suspensivos al final del texto desbordado */
+}
+
+.indicator {
+    margin-left: 2px;
+    transition: transform 0.3s ease;
+    transform: rotate(-90deg);
+}
+
+.indicator.rotate {
+    transform: rotate(0deg);
+}
+
+/* tools*/
+.sidebar {
+    
+    height: 100vh;
+    background-color: #151a21;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Añade scroll si el contenido es demasiado largo */
+    padding: 56px 0 0 0;
+    width: 45px;
+    transition: width 0.3s;
+}
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    margin: 0;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #497653;
+}
+
+.nav-link.activo {
+    background-color: #218838 !important; /* Color de fondo para el elemento activo */
+    color: white; /* Color del texto para el elemento activo */
+}
+
+.nav-link.activo .feather {
+    color: white; /* Color del icono para el elemento activo */
+}
+
+
+
+.sidebar .nav-link .nav-text {
+    display: none;
+    margin-left: 10px;
+}
+
+.sidebar:hover .nav-link .nav-text {
+    display: inline;
+}
+
+.sidebar .nav-link svg {
+    flex-shrink: 0;
 }
