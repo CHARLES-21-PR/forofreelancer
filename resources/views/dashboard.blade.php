@@ -13,12 +13,12 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-4 order-lg-last">
-                            <img class="img-fluid" src="/img/fondoLogin.jpg" alt="">
+                            <img class="img-fluid" src="/images/1737419869.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
                                 <h1 class="h1 text-success">Bienvenido!</h1>
-                                <h3 class="h2">Al foro universitario de la UNDC</h3>
+                                <h3 class="h2">Al Forofreelancer</h3>
                                 <p>
                                     Este foro a sido desarrolado por estudiantes de facultad de ingenieria de la UNDC del IV CICLO.
                                 </p>
@@ -31,12 +31,12 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-4 order-lg-last">
-                            <img class="img-fluid" src="/img/principal/imgAula.jpg" alt="">
+                            <img class="img-fluid" src="/images/1737419869.jpg" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
-                                <h1 class="h1">Nuestra aula</h1>
-                                <h3 class="h2">IV CICLO </h3>
+                                <h1 class="h1">Nosotros</h1>
+                                <h3 class="h2">somos 10 </h3>
                                 <p>
                                     Somos una nueva generación de futuros ingenieros de sistemas, 
                                     apasionados por la tecnología y motivados por el deseo de transformar 

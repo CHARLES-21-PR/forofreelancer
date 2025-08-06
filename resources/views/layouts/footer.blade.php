@@ -4,13 +4,13 @@
 
             <div class="col-md-4 pt-5">
                 <a class="navbar-brand text-success logo h1 align-self-center" href="#">
-                    <img src="/img/principal/lgSistema.png" width="150pc" alt="">
+                    <img src="/img/loguito.jpg" width="150pc" alt="">
                 </a>
                 
                 <ul class="list-unstyled text-light footer-link-list">
                     <li>
                         <i class="fas fa-map-marker-alt fa-fw"></i>
-                        Casa de la cultura
+                        San Vicente, Lima - Perú
                     </li>
                     <li>
                         <i class="fa fa-phone fa-fw"></i>
@@ -18,31 +18,31 @@
                     </li>
                     <li>
                         <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:info@company.com">Soporte@undc.edu.pe</a>
+                        <a class="text-decoration-none" href="mailto:info@company.com">Forofreelancer@gmail.com</a>
                     </li>
                 </ul>
             </div>
 
             <div class="col-md-4 pt-5">
-                <h2 class="h2 text-light border-bottom pb-3 border-light">Asignaturas</h2>
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Servicios</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Cultura Ambiental y Responsabilidad Social</a></li>
-                    <li><a class="text-decoration-none" href="#">Derecho Empresarial</a></li>
-                    <li><a class="text-decoration-none" href="#">Estadistica y Probabilidades</a></li>
-                    <li><a class="text-decoration-none" href="#">Investigación Operativa II</a></li>
-                    <li><a class="text-decoration-none" href="#">Sistemas Digitales</a></li>
-                    <li><a class="text-decoration-none" href="#">Fundamentos de Base de Datos</a></li>
+                    <li><a class="text-decoration-none" href="#">Landing Pages</a></li>
+                    <li><a class="text-decoration-none" href="#">Diseño Web</a></li>
+                    <li><a class="text-decoration-none" href="#">Aplicaciones web</a></li>
+                    
                     
                 </ul>
             </div>
 
             <div class="col-md-4 pt-5">
-                <h2 class="h2 text-light border-bottom pb-3 border-light">Vistas</h2>
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Lenguajes</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                    <li><a class="text-decoration-none" href="#">Foro</a></li>
-                    <li><a class="text-decoration-none" href="#">Noticias</a></li>
-                    
+                    <li><a class="text-decoration-none" href="#">PHP</a></li>
+                    <li><a class="text-decoration-none" href="#">JavaScript</a></li>
+                    <li><a class="text-decoration-none" href="#">Python</a></li>
+                    <li><a class="text-decoration-none" href="#">Java</a></li>
+                            
+
                 </ul>
             </div>
 
@@ -77,8 +77,8 @@
             <div class="row pt-2">
                 <div class="col-12">
                     <p class="text-left text-light">
-                        Copyright &copy; 2024 Facultad de Ingenieria 
-                        | UNDC 
+                        Copyright &copy; 2025 Foro freelancer 
+                        | All Rights Reserved 
                     </p>
                 </div>
             </div>
